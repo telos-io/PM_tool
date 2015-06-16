@@ -1,0 +1,25 @@
+<% if @project.error.any? %>
+  <ul>
+    <%= @project.errors.full_message.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @project, url: projects_path do |f| %>
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+<div>
+  <%= f.label :decription %>
+  <%= f.text_field :description %>
+</div>
+<div>
+  <%= f.label :due_date %>
+  <%= f.text_field :due_date %>
+</div>
+<div>
+  <%= f.submit %>
+</div>
+<% end %>
