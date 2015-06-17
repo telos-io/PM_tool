@@ -1,4 +1,4 @@
-<% if @project.error.any? %>
+<% if @project.errors.any? %>
   <ul>
     <%= @project.errors.full_message.each do |msg| %>
       <li><%= msg %></li>
