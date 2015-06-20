@@ -11,6 +11,14 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  resources :users, except: [:edit, :update] do
+      get :edit, on: :collection
+      patch :update, on: :collection
+    end
+
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
 
 
 
