@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :projects
 
+  resources :tasks
+
+
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

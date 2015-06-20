@@ -10,15 +10,18 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    project_params = params.require(:project).permit([:title, :description, :due_date])
     @project = Project.new(project_params)
     if @project.save
-      redirect_to project_path(@project), notice: "Project Created"
+      redirect_to projects_path(@project), notice: "Project Created"
     else
       render :new
     end
   end
 
   def show
+    #@task = Task.new
+    @project = Project.find params[:id]
   end
 
   def edit
@@ -26,7 +29,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to project_path(@project), notice: "Question Updated"
+      redirect_to projects_path(@project), notice: "Project Updated"
     else
       render :edit
     end
@@ -34,7 +37,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to project_path, notice: "Project Destroyed"
+    redirect_to projects_path, notice: "Project Destroyed"
   end
 
   private
@@ -44,7 +47,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit([:title, :body, :description, :due_date])
+    params.require(:project).permit([:title, :description, :due_date])
   end
 
 end

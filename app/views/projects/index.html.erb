@@ -1,0 +1,8 @@
+<h1>All Projects</h1>
+
+<%# this looks through the @questions which is like an Array
+    then we can display a line per question %>
+<% @projects.each do |projects| %>
+  <%= link_to projects.title, project_path(projects) %>
+  <hr>
+<% end %>
